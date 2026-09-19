@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="IdentityServer/IdentityServer.csproj" />
+  <Project Path="SampleAPI/SampleAPI.csproj" />
+  <Project Path="SampleClient/SampleClient.csproj" Id="c335fe50-fe6a-48b4-bb50-3df27c2089f2" />
+</Solution>

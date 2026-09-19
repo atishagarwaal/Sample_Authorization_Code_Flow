@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "SampleClient": {
+      "commandName": "Project"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker"
+    }
+  }
+}

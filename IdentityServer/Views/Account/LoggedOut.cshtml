@@ -1,0 +1,19 @@
+@model LoggedOutViewModel
+@{
+    ViewData["Title"] = "Logged out";
+}
+
+<div class="panel">
+    <h1>Logged out</h1>
+    <p>You are now logged out.</p>
+    @if (!string.IsNullOrWhiteSpace(Model.PostLogoutRedirectUri))
+    {
+        <p>
+            <a href="@Model.PostLogoutRedirectUri">Return to @Model.ClientName</a>
+        </p>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.SignOutIframeUrl))
+    {
+        <iframe src="@Model.SignOutIframeUrl" style="display:none"></iframe>
+    }
+</div>

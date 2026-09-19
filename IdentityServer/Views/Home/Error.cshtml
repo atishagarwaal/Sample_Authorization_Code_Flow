@@ -1,0 +1,14 @@
+@model ErrorViewModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<h1>Error</h1>
+@if (!string.IsNullOrWhiteSpace(Model.Error))
+{
+    <p><strong>@Model.Error</strong></p>
+}
+@if (!string.IsNullOrWhiteSpace(Model.ErrorDescription))
+{
+    <p class="muted">@Model.ErrorDescription</p>
+}
