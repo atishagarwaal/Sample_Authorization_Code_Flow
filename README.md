@@ -26,9 +26,9 @@ Using the command line (PowerShell)
 - Restore and build the solution:
   dotnet restore
   dotnet build
-- Start IdentityServer:
-  dotnet run --project IdentityServer
+- Start IdentityServer (HTTPS profile — matches https://localhost:5001):
+  dotnet run --project IdentityServer --launch-profile https
 - Start the API (in a separate terminal):
-  dotnet run --project SampleAPI
+  dotnet run --project SampleAPI --launch-profile https
 - Run the console client (in another terminal):
   dotnet run --project SampleClient

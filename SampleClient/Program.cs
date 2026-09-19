@@ -97,7 +97,6 @@ var tokenResponse = await client.RequestAuthorizationCodeTokenAsync(new Authoriz
 {
     Address = disco.TokenEndpoint,
     ClientId = "weather-client-app",
-    ClientSecret = "Pass@word123",
     Code = authorizeResponse.Code,
     RedirectUri = "http://127.0.0.1:7890/",
     CodeVerifier = codeVerifier

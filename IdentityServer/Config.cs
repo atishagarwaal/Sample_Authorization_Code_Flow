@@ -39,11 +39,13 @@ public static class Config
                 new Client
                 {
                     ClientId = "weather-client-app",
-
-                    ClientSecrets = { new Secret("Pass@word123".Sha256()) },
+                    ClientName = "Weather Client App",
+                    AllowRememberConsent = true,
 
                     AllowedGrantTypes = GrantTypes.Code,
-                    RequireConsent = false,
+                    RequireClientSecret = false,
+                    RequirePkce = true,
+                    RequireConsent = true,
 
                     // Where to redirect to after login
                     RedirectUris =

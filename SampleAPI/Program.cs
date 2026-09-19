@@ -20,9 +20,12 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddAuthorization(options =>
 {
-    // Creates a policy named "WeatherReadPolicy" that requires the client to have "weather.read" permission scope
     options.AddPolicy("WeatherReadPolicy", policy =>
-        policy.RequireClaim("scope", "weather.read"));
+        policy.RequireAssertion(context =>
+            context.User.Claims.Any(claim =>
+                claim.Type == "scope" &&
+                claim.Value.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+                    .Contains("weather.read", StringComparer.Ordinal))));
 });
 
 builder.Services.AddControllers();

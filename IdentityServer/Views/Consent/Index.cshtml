@@ -1,0 +1,75 @@
+@model ConsentViewModel
+@{
+    ViewData["Title"] = "Consent";
+}
+
+<div class="panel">
+    <h1>Consent</h1>
+    <p class="muted">
+        <strong>@Model.ClientName</strong> is requesting access to your account.
+    </p>
+
+    <form asp-action="Index" method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+        <div asp-validation-summary="ModelOnly" class="validation"></div>
+
+        @if (Model.IdentityScopes.Any())
+        {
+            <p>Personal information:</p>
+            <ul>
+                @foreach (var scope in Model.IdentityScopes)
+                {
+                    <li>
+                        <label>
+                            @if (scope.Required)
+                            {
+                                <input type="hidden" name="ScopesConsented" value="@scope.Value" />
+                                <input type="checkbox" checked="checked" disabled="disabled" />
+                            }
+                            else
+                            {
+                                <input type="checkbox"
+                                       name="ScopesConsented"
+                                       value="@scope.Value"
+                                       @(scope.Checked ? "checked" : null) />
+                            }
+                            @scope.DisplayName
+                        </label>
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (Model.ApiScopes.Any())
+        {
+            <p>Application access:</p>
+            <ul>
+                @foreach (var scope in Model.ApiScopes)
+                {
+                    <li>
+                        <label>
+                            <input type="checkbox"
+                                   name="ScopesConsented"
+                                   value="@scope.Value"
+                                   @(scope.Checked ? "checked" : null) />
+                            @scope.DisplayName
+                        </label>
+                    </li>
+                }
+            </ul>
+        }
+
+        @if (Model.AllowRememberConsent)
+        {
+            <label>
+                <input type="checkbox" asp-for="RememberConsent" />
+                Remember my choice
+            </label>
+        }
+
+        <div>
+            <button type="submit" name="Button" value="yes">Yes, allow</button>
+            <button type="submit" name="Button" value="no">No, deny</button>
+        </div>
+    </form>
+</div>
